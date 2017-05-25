@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleReorder()">
+        Edit
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list [reorder]="shouldReorder" (ionItemReorder)="$event.applyTo(pepole)">
+    <ion-item-sliding *ngFor="let persone of pepole">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="persone.picture.thumbnail">
+        </ion-avatar>
+        {{persone.name.first}} {{persone.name.last}}
+        <ion-note>
+          {{persone.name.phone}}
+        </ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button>Hello</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!-- <pre>{{ pepole | json }}</pre> -->
+</ion-content>
