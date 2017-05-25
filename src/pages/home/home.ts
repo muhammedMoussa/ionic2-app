@@ -6,9 +6,6 @@ import { PepoleProvider } from '../../providers/pepole/pepole';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  //Old Static Json Data
-  // New Dinamic data
-  // public pepole = this.service.getPepole()
   public pepole = []
   shouldReorder = false
 
@@ -22,10 +19,24 @@ export class HomePage {
       )
   }
 
-  ionViewDidLoad() {
-      console.log(this.pepole)
+  //Refresher
+  doRefresh(e){
+    this.service.getPepole()
+      .subscribe(
+        data => this.pepole.unshift(...data.results),
+        err => console.log(err),
+        () => e.complete()
+      )
   }
-
+  //Infinite Scroll
+  doInfinite(e){
+    this.service.getPepole()
+      .subscribe(
+        data => this.pepole.push(...data.results),
+        err => console.log(err),
+        () => e.complete()
+      )
+  }
   //Reorder List
   toggleReorder(){
     this.shouldReorder = !this.shouldReorder

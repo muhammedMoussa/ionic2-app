@@ -12,6 +12,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list [reorder]="shouldReorder" (ionItemReorder)="$event.applyTo(pepole)">
     <ion-item-sliding *ngFor="let persone of pepole">
       <ion-item>
@@ -28,5 +31,8 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
   <!-- <pre>{{ pepole | json }}</pre> -->
 </ion-content>
