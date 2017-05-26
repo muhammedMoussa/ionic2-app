@@ -7,12 +7,15 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DetailsPage } from '../pages/details/details';
+
 import { PepoleProvider } from '../providers/pepole/pepole';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { PepoleProvider } from '../providers/pepole/pepole';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { PepoleProvider } from '../../providers/pepole/pepole';
+import { Component } from '@angular/core'
+import { NavController } from 'ionic-angular'
+import { PepoleProvider } from '../../providers/pepole/pepole'
+import { DetailsPage } from '../details/details';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,10 +15,15 @@ export class HomePage {
     public navCtrl: NavController,
     public service: PepoleProvider
   ){
+    //Getting Data from Ingictable service
     this.service.getPepole()
       .subscribe(
         data => this.pepole = data.results
       )
+  }
+  //Navigation
+  pushDetails(user){
+    this.navCtrl.push(DetailsPage, user)
   }
 
   //Refresher
@@ -41,4 +48,5 @@ export class HomePage {
   toggleReorder(){
     this.shouldReorder = !this.shouldReorder
   }
+
 }
